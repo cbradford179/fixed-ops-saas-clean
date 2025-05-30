@@ -1,25 +1,17 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import ProtectedRoute from "./components/Auth/ProtectedRoute";
+import { useAuth0 } from '@auth0/auth0-react';
+import LoginPage from './pages/Login';
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const { isAuthenticated } = useAuth0();
+
+  if (!isAuthenticated) {
+    return <LoginPage />;
+  }
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login onLogin={setUser} />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute user={user}>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </Router>
+    <div>
+      {/* Your normal app UI here */}
+      <h1>Welcome back!</h1>
+    </div>
   );
 }
