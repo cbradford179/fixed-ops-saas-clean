@@ -19,3 +19,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </Auth0Provider>
 );
+// 5) Remove diff markers from main.jsx
