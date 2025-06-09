@@ -1,5 +1,5 @@
 {
-  "type": "module"
+  "type": "module",
   "name": "fixed-ops-saas-login",
   "version": "1.0.0",
   "scripts": {
